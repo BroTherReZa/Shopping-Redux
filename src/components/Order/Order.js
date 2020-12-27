@@ -6,10 +6,11 @@ import Button from '../UI/Button/Button'
 
 const Order =(props) => {
     const summery = Object.keys(props.products).map((p)=>{
-        return(
-            <li key={p} className="order-item">
+        return (
+            props.products[p] !== 0 ?
+                <li key={p} className="order-item">
                 {p} : {props.products[p]}
-            </li>
+            </li> : null
         )
     })
     return (
