@@ -20,6 +20,7 @@ class Shopping extends React.Component {
     loading: false,
   };
   componentDidMount() {
+    //console.log(this.props)
     axios
       .get(
         "https://react-redux-main-33f7e-default-rtdb.firebaseio.com/products.json"
@@ -84,13 +85,14 @@ class Shopping extends React.Component {
       .post("/orders.json", order)
       .then((res) => {
         this.setState({ loading: false, purchased: false });
+        this.props.history.push("/checkout");
       })
       .catch((error) => {
         this.setState({ loading: false, purchased: false });
       });
   };
   render() {
-    let order = null
+    let order = null;
     if (this.state.loading) {
       order = <Loader />;
     }
